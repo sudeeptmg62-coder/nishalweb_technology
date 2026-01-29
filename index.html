@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nishal Shrestha | Bio Data</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #000000 0%, #1a1a2e 50%, #16213e 100%);
+            color: #333;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+        }
+
+        /* Animated background particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-100px) translateX(50px); }
+            50% { transform: translateY(-200px) translateX(-30px); }
+            75% { transform: translateY(-100px) translateX(-50px); }
+        }
+
+        /* Container */
+        .container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px 15px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 60px 25px 40px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
+            animation: fadeInDown 1s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .header img:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .header h1 {
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .header h3 {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            margin-bottom: 12px;
+            opacity: 0.95;
+        }
+
+        .header .location {
+            margin-bottom: 15px;
+            font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+            opacity: 0.9;
+        }
+
+        .header .summary {
+            max-width: 100%;
+            line-height: 1.7;
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+            opacity: 0.95;
+            padding: 0 10px;
+        }
+
+        /* Cards Container */
+        .cards-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            padding-bottom: 40px;
+        }
+
+        /* Card */
+        .card {
+            background: #ffffff;
+            color: #2c3e50;
+            padding: 30px 25px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, currentColor, transparent);
+            opacity: 0.6;
+        }
+
+        .card.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .card h2 {
+            margin-bottom: 20px;
+            font-size: clamp(1.4rem, 4vw, 1.9rem);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card p, .card li {
+            margin-bottom: 10px;
+            font-size: clamp(0.95rem, 2.5vw, 1.08rem);
+            line-height: 1.6;
+            word-wrap: break-word;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card ul li::before {
+            content: '✓ ';
+            color: inherit;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        /* Card Colors */
+        .purple { 
+            background: linear-gradient(135deg, #a569bd 0%, #8e44ad 100%);
+            color: #fff;
+        }
+        .orange { 
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+            color: #fff;
+        }
+        .blue { 
+            background: linear-gradient(135deg, #5dade2 0%, #3498db 100%);
+            color: #fff;
+        }
+        .pink { 
+            background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 100%);
+            color: #fff;
+        }
+        .dark { 
+            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+            color: #fff;
+        }
+
+        /* Links */
+        a {
+            color: #1877f2;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            word-break: break-word;
+            display: inline-block;
+        }
+
+        a:hover {
+            color: #0f5acb;
+            transform: translateX(5px);
+        }
+
+        .purple a, .orange a, .blue a, .pink a, .dark a {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .facebook-icon i {
+            margin-right: 8px;
+        }
+
+        /* Skills & Hobbies */
+        .skills, .hobbies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skills span, .hobbies div {
+            background: rgba(255, 255, 255, 0.25);
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-size: clamp(0.85rem, 2.5vw, 1rem);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .skills span:hover, .hobbies div:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            background: rgba(17, 17, 17, 0.9);
+            color: #ccc;
+            padding: 25px 15px;
+            margin-top: 40px;
+            border-radius: 16px;
+            font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.5);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .scroll-top.show {
+            display: flex;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.7);
+        }
+
+        /* Mobile optimizations */
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 15px 12px;
+            }
+
+            .header {
+                padding: 40px 20px 30px;
+                margin-bottom: 30px;
+                border-radius: 16px;
+            }
+
+            .header img {
+                width: 130px;
+                height: 130px;
+                border-width: 4px;
+            }
+
+            .card {
+                padding: 25px 20px;
+                border-radius: 14px;
+            }
+
+            .cards-container {
+                gap: 20px;
+            }
+
+            .scroll-top {
+                width: 45px;
+                height: 45px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 18px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .container {
+                padding: 10px 10px;
+            }
+
+            .header {
+                padding: 30px 15px 25px;
+                border-radius: 14px;
+            }
+
+            .header img {
+                width: 110px;
+                height: 110px;
+                border-width: 3px;
+            }
+
+            .card {
+                padding: 20px 18px;
+                border-radius: 12px;
+            }
+
+            .card h2 {
+                gap: 8px;
+            }
+
+            .skills span, .hobbies div {
+                padding: 8px 14px;
+            }
+
+            .footer {
+                padding: 20px 15px;
+                margin-top: 30px;
+            }
+
+            .scroll-top {
+                width: 40px;
+                height: 40px;
+                bottom: 15px;
+                right: 15px;
+                font-size: 16px;
+            }
+        }
+
+        /* Loading animation */
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Animated background -->
+<div class="particles" id="particles"></div>
+
+<div class="container">
+    <!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <img src="WhatsApp Image 2026-01-29 at 4.09.08 PM.jpeg" alt="Nishal Shrestha Profile">
+            <h1>Nishal Shrestha</h1>
+            <h3>Web Technology Student</h3>
+            <p class="location">📍 Sundarharaicha 11, Belepur, Morang, Nepal</p>
+            <p class="summary">
+                Aspiring web developer studying BICTE at Sukuna Multiple Campus.
+                Passionate about coding and learning new technologies.
+            </p>
+        </div>
+    </div>
+
+    <!-- Cards Container -->
+    <div class="cards-container">
+        <!-- Personal Info -->
+        <div class="card purple">
+            <h2>👤 Personal Info</h2>
+            <p>📅 DOB: 2062-02-16</p>
+            <p>👨 Gender: Male</p>
+            <p>🌏 Nationality: Nepali</p>
+            <p>🏠 Address: Sundarharaicha 11, Belepur</p>
+            <p>📧 Email: nishalshrestha861@gmail.com</p>
+            <p>📞 Phone: +977-9807088526</p>
+            <p>
+                <a href="https://www.facebook.com/share/1FA3LDcxL1/" target="_blank" class="facebook-icon">
+                    <i class="fab fa-facebook-f"></i> Nishal Shrestha
+                </a>
+            </p>
+        </div>
+
+        <!-- Education -->
+        <div class="card orange">
+            <h2>🎓 Education</h2>
+            <p><b>+2 in Management, Computer Science</b></p>
+            <p><a href="https://www.sukunaschool.edu.np/index" target="_blank">Sukuna Secondary School</a></p>
+            <p>📍 Sundarharaicha 10, Nepal</p>
+            <p>🎯 Passout: 2080/81</p>
+            <br>
+            <p><b>BICTE</b></p>
+            <p><a href="https://www.sukuna.edu.np/" target="_blank">Sukuna Multiple Campus</a></p>
+            <p>📍 Sundarharaicha 12, Nepal</p>
+            <p>🎯 Expected: 2084/85</p>
+        </div>
+
+        <!-- Skills -->
+        <div class="card blue">
+            <h2>🚀 Skills</h2>
+            <div class="skills">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>PHP</span>
+                <span>JavaScript</span>
+                <span>C Programming</span>
+                <span>C++</span>
+            </div>
+        </div>
+
+        <!-- Hobbies -->
+        <div class="card pink">
+            <h2>🎯 Hobbies</h2>
+            <div class="hobbies">
+                <div>💻 Coding</div>
+                <div>📚 Reading</div>
+                <div>🎧 Music</div>
+                <div>✈️ Traveling</div>
+            </div>
+        </div>
+
+        <!-- Strengths -->
+        <div class="card dark">
+            <h2>⭐ Strengths</h2>
+            <ul>
+                <li>Quick Learner</li>
+                <li>Problem Solving</li>
+                <li>Team Work</li>
+                <li>Creative Thinking</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2026 Nishal Shrestha. All Rights Reserved.</p>
+    </footer>
+</div>
+
+<!-- Scroll to top button -->
+<button class="scroll-top" id="scrollTop">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+    // Create animated background particles
+    function createParticles() {
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = window.innerWidth < 768 ? 15 : 30;
+        
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.width = Math.random() * 5 + 2 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+    }
+
+    // Intersection Observer for card animations
+    const cards = document.querySelectorAll('.card');
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('show');
+                }, index * 100);
+            }
+        });
+    }, observerOptions);
+
+    cards.forEach(card => observer.observe(card));
+
+    // Scroll to top button
+    const scrollTopBtn = document.getElementById('scrollTop');
+    
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            scrollTopBtn.classList.add('show');
+        } else {
+            scrollTopBtn.classList.remove('show');
+        }
+    });
+
+    scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Initialize particles
+    createParticles();
+
+    // Recreate particles on resize (for responsive behavior)
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            document.getElementById('particles').innerHTML = '';
+            createParticles();
+        }, 250);
+    });
+</script>
+
+</body>
+</html>
