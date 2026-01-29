@@ -1,0 +1,197 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background-color: #000;
+    color: #333;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 1200px; /* increased max width */
+    margin: auto;
+    padding: 0 15px;
+}
+
+/* Header */
+.header {
+    width: 100%;
+    text-align: center;
+    background-color: #111;
+    color: #fff;
+    padding: 50px 15px;
+}
+
+.header img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 4px solid #fff;
+}
+
+.header h1 {
+    font-size: 2.5rem; /* bigger text */
+    margin-bottom: 10px;
+}
+
+.header h3 {
+    font-size: 1.3rem; 
+    color: #f0f0f0;
+    margin-bottom: 10px;
+}
+
+.header .location {
+    color: #ccc;
+    margin-bottom: 15px;
+    font-size: 1rem; /* bigger location text */
+}
+
+.header .summary {
+    max-width: 85%;
+    margin: auto;
+    line-height: 1.6;
+    color: #ddd;
+    font-size: 1.05rem; /* bigger paragraph */
+}
+
+/* Vertical column */
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 40px;
+}
+
+/* Card */
+.card {
+    width: 90%;
+    max-width: 800px; /* bigger container for cards */
+    background-color: #fff;
+    color: #111;
+    margin: 20px 0;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+}
+
+.card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card h2 {
+    margin-bottom: 15px;
+    font-size: 1.8rem; /* bigger title */
+}
+
+.card p, .card li, .card span, .card div {
+    margin-bottom: 8px;
+    font-size: 1.05rem; /* bigger text */
+    word-wrap: break-word;
+}
+
+.card ul {
+    list-style: disc inside;
+}
+
+/* Card Colors */
+.purple { background-color: #a569bd; color: #fff; }
+.orange { background-color: #e67e22; color: #fff; }
+.blue { background-color: #3498db; color: #fff; }
+.pink { background-color: #ff6b81; color: #fff; }
+.dark { background-color: #2c3e50; color: #fff; }
+
+/* Links */
+a {
+    text-decoration: none;
+    word-break: break-word;
+}
+
+/* Blue links */
+.facebook-icon,
+.school-link,
+.campus-link {
+    color: #1877f2; 
+    font-weight: 500;
+    font-size: 1.05rem;
+}
+
+.facebook-icon:hover,
+.school-link:hover,
+.campus-link:hover {
+    color: #0f5acb;
+    text-decoration: underline;
+}
+
+.facebook-icon i {
+    margin-right: 8px;
+}
+
+/* Skills & Hobbies */
+.skills span, .hobbies div {
+    display: inline-block;
+    background-color: rgba(255,255,255,0.2);
+    padding: 8px 15px;
+    border-radius: 25px;
+    margin: 5px 5px 0 0;
+    font-size: 0.95rem;
+}
+
+/* Footer */
+.footer {
+    width: 100%;
+    text-align: center;
+    background-color: #111;
+    color: #ccc;
+    padding: 20px 10px;
+    margin-top: 20px;
+    font-size: 1rem;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 1024px) {
+    .container { padding: 0 20px; }
+    .header img { width: 160px; height: 160px; }
+    .header h1 { font-size: 2.2rem; }
+    .header h3 { font-size: 1.2rem; }
+    .header .summary { font-size: 1rem; }
+    .card { width: 95%; padding: 22px; }
+    .card h2 { font-size: 1.6rem; }
+    .card p, .card li, .card span, .card div { font-size: 1rem; }
+    .skills span, .hobbies div { font-size: 0.9rem; padding: 6px 12px; }
+}
+
+@media screen and (max-width: 768px) {
+    .header img { width: 140px; height: 140px; }
+    .header h1 { font-size: 2rem; }
+    .header h3 { font-size: 1.1rem; }
+    .header .summary { font-size: 0.95rem; }
+    .card { width: 96%; padding: 18px; }
+    .card h2 { font-size: 1.4rem; }
+    .skills span, .hobbies div { font-size: 0.85rem; padding: 5px 10px; }
+}
+
+@media screen and (max-width: 480px) {
+    .header img { width: 120px; height: 120px; }
+    .header h1 { font-size: 1.6rem; }
+    .header h3 { font-size: 1rem; }
+    .header .summary { font-size: 0.9rem; }
+    .card { width: 98%; padding: 15px; }
+    .card h2 { font-size: 1.3rem; }
+    .card p, .card li, .card span, .card div { font-size: 0.95rem; }
+    .skills span, .hobbies div { font-size: 0.8rem; padding: 4px 8px; }
+}
